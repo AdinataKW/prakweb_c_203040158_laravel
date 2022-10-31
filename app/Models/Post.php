@@ -38,6 +38,11 @@ class Post
 
     public static function all() 
     {
-        return $this::$blog_posts;
+        return collect::$blog_posts;
+    }
+
+    public static function find($slug){
+        $posts = static::all;
+    return $post->firstWhere('slug', $slug);
     }
 }
