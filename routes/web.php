@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,40 +33,11 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/blog', function () {
-    $blog_posts = [
-        [
-    
-            "title" => "Judul Post Pertama",
-            "author" => "Adinata Kusuma Wardani",
-            "body" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam ad laboriosam ullam veniam molestias ipsam, impedit debitis? Libero accusantium reprehenderit quas? 
-            Architecto sed impedit voluptatibus odit labore facere. Mollitia commodi similique asperiores aliquam dignissimos cum quia nesciunt! Praesentium cum quidem laudantium nemo facilis quos fugit sint. 
-            Distinctio, ullam. Cumque blanditiis repudiandae voluptas aliquam rem nostrum eius provident, eaque distinctio reprehenderit iste, ullam asperiores! Totam culpa optio repellat nisi iure obcaecati explicabo, 
-            animi illum. Cum adipisci reiciendis atque et voluptatem!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam ad laboriosam ullam veniam molestias ipsam, impedit debitis? Libero accusantium reprehenderit quas? 
-            Architecto sed impedit voluptatibus odit labore facere. Mollitia commodi similique asperiores aliquam dignissimos cum quia nesciunt! Praesentium cum quidem laudantium nemo facilis quos fugit sint. 
-            Distinctio, ullam. Cumque blanditiis repudiandae voluptas aliquam rem nostrum eius provident, eaque distinctio reprehenderit iste, ullam asperiores! Totam culpa optio repellat nisi iure obcaecati explicabo, 
-            animi illum. Cum adipisci reiciendis atque et voluptatem!"
-        ],
-        [
-    
-            "title" => "Judul Post Kedua",
-            "author" => "Adinata Kusuma Wardani",
-            "body" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam ad laboriosam ullam veniam molestias ipsam, impedit debitis? Libero accusantium reprehenderit quas? 
-            Architecto sed impedit voluptatibus odit labore facere. Mollitia commodi similique asperiores aliquam dignissimos cum quia nesciunt! Praesentium cum quidem laudantium nemo facilis quos fugit sint. 
-            Distinctio, ullam. Cumque blanditiis repudiandae voluptas aliquam rem nostrum eius provident, eaque distinctio reprehenderit iste, ullam asperiores! Totam culpa optio repellat nisi iure obcaecati explicabo, 
-            animi illum. Cum adipisci reiciendis atque et voluptatem!
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam ad laboriosam ullam veniam molestias ipsam, impedit debitis? Libero accusantium reprehenderit quas? 
-            Architecto sed impedit voluptatibus odit labore facere. Mollitia commodi similique asperiores aliquam dignissimos cum quia nesciunt! Praesentium cum quidem laudantium nemo facilis quos fugit sint. 
-            Distinctio, ullam. Cumque blanditiis repudiandae voluptas aliquam rem nostrum eius provident, eaque distinctio reprehenderit iste, ullam asperiores! Totam culpa optio repellat nisi iure obcaecati explicabo, 
-            animi illum. Cum adipisci reiciendis atque et voluptatem!"
-        ],
-    
-    ];
-    
+Route::get('/posts', function () {
+
     return view('posts',[
         "title" => "Posts",
-        "Posts" => $blog_posts
+        "Posts" => Post::all()
     ]);
 
 });
