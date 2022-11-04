@@ -6,7 +6,7 @@
     @foreach ($Posts as $post)
     <article>
         <h2><a href="/posts/{{$post->id }}">{{$post->title}}</a></h2>
-        <p>{{ $post->body }}</p>
+        <p>{{ $post->excerpt }}</p>
     @endforeach
 
 @endsection
