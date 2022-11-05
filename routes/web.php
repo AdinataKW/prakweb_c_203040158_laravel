@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Models\category;
+
 
 
 
@@ -19,41 +21,58 @@ use App\Models\category;
 */
 
 Route::get('/', function () {
-    return view('home',[
-        "title" => "Home",
+    return view('home', [
+        "title" => "Home"
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
-        "name" => "Adinata Kusuma Wardani",
-        "email" => "adinata2862@gmail.com",
-        "image" => "adinata.jpeg", 
-        "npm" => "203040158"
+        "nama" => "AdinataKW",
+        "email" => "adinata206082@gmail.com",
+        "image" => "adinata.jpeg"
     ]);
 });
 
+Route::get('/blog', [PostController::class, 'index']);
 
-Route::get('/posts', [PostController::class, 'index']);
+//halaman post single
 
-Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('posts/{post:slug}',[PostController::class, 'show']);
 
 //halaman categories
+
 Route::get('/categories', function() {
     return view('categories', [
+
+
         'title' => 'Post categories',
         'categories' =>Category::all()
 
 
     ]);
+
 });
+
 //halaman category
-Route::get('categories/{category:slug}', function(Category $category) {
+Route::get('/categories/{category:slug}', function(Category $category) {
     return view('category', [
         'title' =>$category->name,
         'posts' =>$category->posts,
         'category' =>$category->name
+    ]);
+});
+
+
+//halaman User
+Route::get('/authors/{author:username}', function(User $author) {
+    return view('posts', [
+        'title' =>'User Post',
+        'posts' => $author-> posts
 
     ]);
 });
+
+
+
