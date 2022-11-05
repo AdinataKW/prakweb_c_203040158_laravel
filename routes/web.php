@@ -59,23 +59,23 @@ Route::get('/categories', function() {
 });
 
 //halaman category
-Route::get('/categories/{category:slug}', function(Category $category) {
-        return view('posts', [
-            'title' =>"Post By category :$category->name",
-            'posts' =>$category->posts->load(['category', 'author']),
-    ]);
-});
+// Route::get('/categories/{category:slug}', function(Category $category) {
+//         return view('posts', [
+//             'title' =>"Post By category :$category->name",
+//             'active' =>"categories",
+//             'posts' =>$category->posts->load(['category', 'author']),
+//     ]);
+// });
 
 
 //halaman User
-Route::get('/authors/{author:username}', function(User $author) {
-    return view('posts', [
-        'title' =>"Post By Author : $author->name",
-        'active' =>"categories",
-        'posts' => $author-> posts ->load(['category', 'author'])
+// Route::get('/authors/{author:username}', function(User $author) {
+//     return view('posts', [
+//         'title' =>"Post By Author : $author->name",
+//         'posts' => $author-> posts ->load(['category', 'author'])
 
-    ]);
-});
+//     ]);
+// });
 
 
 
