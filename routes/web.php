@@ -22,13 +22,15 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('home', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" =>"home"
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
+        "active"=>"about",
         "nama" => "AdinataKW",
         "email" => "adinata206082@gmail.com",
         "image" => "adinata.jpeg"
@@ -48,6 +50,7 @@ Route::get('/categories', function() {
 
 
         'title' => 'Post categories',
+        'active' =>"categories",
         'categories' =>Category::all()
 
 
@@ -68,6 +71,7 @@ Route::get('/categories/{category:slug}', function(Category $category) {
 Route::get('/authors/{author:username}', function(User $author) {
     return view('posts', [
         'title' =>"Post By Author : $author->name",
+        'active' =>"categories",
         'posts' => $author-> posts ->load(['category', 'author'])
 
     ]);
